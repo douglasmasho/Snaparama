@@ -3,7 +3,8 @@ import Title from "./title";
 import PhotoWall from "./photowall";
 import AddPhoto from "./addPhoto";
 import {Route} from "react-router-dom";
-import {removePost} from "../redux/actions"
+import {removePost} from "../redux/actions";
+import {Link} from "react-router-dom";
 
 
 export default class Main extends Component{
@@ -13,15 +14,17 @@ export default class Main extends Component{
     render(){
       //this.props.dispatch(removePost)
       return <div>
+                <h1>
+                  <Link to="/">Photowall</Link>
+                </h1>
                <Route exact path="/" render={()=>(
                     <div>
-                        <Title title="PhotoWall"/>
                         <PhotoWall posts={this.props.posts} {...this.props}/>
                         {/* <PhotoWall/> */}
                      </div>
                )}/>
                 <Route exact path="/AddPhoto" render ={({history})=>(
-                  <AddPhoto onAddPhoto={(addedPost)=>{
+                  <AddPhoto {...this.props} onAddPhoto={(addedPost)=>{
                   }} history={history}/>
                   )}/>
              </div>

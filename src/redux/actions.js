@@ -8,5 +8,12 @@ export function removePost(index){
     }
 }
 
+export function addPost(post){
+    return {
+        type: "ADD_POST",
+        post: post
+    }
+}
+
 
 //adding a post

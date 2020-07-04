@@ -3,8 +3,10 @@ import post  from "../data/posts";
 
 const postReducer = function posts(state = post, action){
     switch(action.type){
-        case "REMOVE_POST": 
+        case "REMOVE_POST":
         return (state.filter((post,index)=> index !== action.index))
+        case "ADD_POST":
+        return (state.concat([action.post]))   
         default: return state
     }
 } 

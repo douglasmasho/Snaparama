@@ -3,7 +3,7 @@
 import Main from "../components/main"; 
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {removePost} from "../redux/actions";
+import  * as actions from "../redux/actions";
 import {withRouter} from "react-router";
 
 function mapStateToProps(state){ ///mapping function //returns a state that you want to inject(inside an object literal)
@@ -13,7 +13,7 @@ function mapStateToProps(state){ ///mapping function //returns a state that you 
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({removePost}, dispatch)///binding the two so that calling the action rom props will dispatch the action
+    return bindActionCreators(actions, dispatch)///binding the two so that calling the action rom props will dispatch the action
     //before binding---> this.props.dispacth(removePost());
     //after binding---->this.props.removePost()
                             //    |            |
