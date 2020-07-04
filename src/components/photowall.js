@@ -11,7 +11,7 @@ export default function PhotoWall(props){
                   {props.posts.sort((a,b)=>{
                     return  b.id - a.id;
                     // return a - b;
-                  }).map((post, index)=><Photo key={index} post={post} onRemovePhoto={props.onRemovePhoto}/>)}
+                  }).map((post, index)=><Photo key={index} index={index} post={post} {...props}/>)}
                 </div>
               </div>
 }

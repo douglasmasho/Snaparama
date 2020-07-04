@@ -1,14 +1,19 @@
 import React from "react";
 import ReactDom from "react-dom";
-import Main from "./components/main";
+// import Main from "./components/main";
 import "./styles/main.scss";
 import {BrowserRouter} from "react-router-dom";
+//create and init the redux store
+import {createStore} from "redux";
+import rootReducer from "./redux/reducer";
+import {Provider} from "react-redux";
+import App from "./components/App"
+
+const store = createStore(rootReducer);
 
 
 
-
-
-ReactDom.render(<BrowserRouter><Main/></BrowserRouter>, document.getElementById("root"));
+ReactDom.render(<Provider store={store}><BrowserRouter><App/></BrowserRouter></Provider>, document.getElementById("root"));
 
 //********************1st lesson intro*************************************/
 
