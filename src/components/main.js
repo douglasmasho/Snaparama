@@ -5,6 +5,7 @@ import AddPhoto from "./addPhoto";
 import {Route} from "react-router-dom";
 import {removePost} from "../redux/actions";
 import {Link} from "react-router-dom";
+import Single from "./single";
 
 
 export default class Main extends Component{
@@ -26,6 +27,10 @@ export default class Main extends Component{
                 <Route exact path="/AddPhoto" render ={({history})=>(
                   <AddPhoto {...this.props} onAddPhoto={(addedPost)=>{
                   }} history={history}/>
+                  )}/>
+
+                  <Route path="/single/:id" render ={(routeArg)=>(
+                    <Single routeArg={routeArg} {...this.props}/>
                   )}/>
              </div>
       

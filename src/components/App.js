@@ -27,7 +27,7 @@ function mapDispatchToProps(dispatch){
 const App = connect(mapStateToProps, mapDispatchToProps)(Main); //this method returns a component which contains a connected component.
 
 
-export default withRouter(App);//exporting the new component, it is indeed the main component container(the container has no dom markup), only difference being that it's now connected.
+export default App;//exporting the new component, it is indeed the main component container(the container has no dom markup), only difference being that it's now connected.
 
 
 
