@@ -1,14 +1,12 @@
-
-
 import Main from "../components/main"; 
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import  * as actions from "../redux/actions";
-import {withRouter} from "react-router";
 
 function mapStateToProps(state){ ///mapping function //returns a state that you want to inject(inside an object literal)
     return {
-        posts: state
+        posts: state.posts,
+        comments: state.comments
     }
 }
 

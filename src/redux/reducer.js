@@ -1,7 +1,16 @@
 import post  from "../data/posts";
+import {combineReducers} from "redux";
+
+function comments(state= [], action){
+    switch(action.type){
+        case "ADD_COMMENT": return state.concat([action.commentObj]);
+        default: return state
+    }
+    // return state;
+}
 
 
-const postReducer = function posts(state = post, action){
+function posts(state = post, action){
     switch(action.type){
         case "REMOVE_POST":
         return (state.filter((post,index)=> index !== action.index))
@@ -11,9 +20,12 @@ const postReducer = function posts(state = post, action){
     }
 } 
 
+
+const rootReducer = combineReducers({posts,comments})
+
 //first arg--> current application state
 //second arg-->action that modifies the state.
 
 
 
-export default postReducer;
+export default rootReducer;

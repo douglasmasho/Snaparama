@@ -15,5 +15,12 @@ export function addPost(post){
     }
 }
 
+export function addComment(commentObj){
+    return {
+        type: "ADD_COMMENT",
+        commentObj: commentObj
+    }
+}
+
 
 //adding a post
