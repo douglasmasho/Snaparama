@@ -11,7 +11,7 @@ export default class Single extends Component{
         let post = posts.find((post)=> post.id == id);
         return (
             <div className="single-photo">
-                <Photo post={post}/>
+                <Photo post={post} comments={comments}/>
                 <Comments addComment = {this.props.addComment} comments={comments} id={id}/>
             </div>
         )

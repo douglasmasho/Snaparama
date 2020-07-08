@@ -14,6 +14,8 @@ export default class Comments extends Component{
             comment: comment
         }
         this.props.addComment(commentObj);
+        document.getElementById("comment").value = ""
+
     }
     render(){
         const id = this.props.id;
