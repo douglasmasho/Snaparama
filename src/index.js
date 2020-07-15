@@ -4,12 +4,23 @@ import ReactDom from "react-dom";
 import "./styles/main.scss";
 import {BrowserRouter} from "react-router-dom";
 //create and init the redux store
-import {createStore} from "redux";
+import {createStore, applyMiddleware, compose} from "redux";
 import rootReducer from "./redux/reducer";
 import {Provider} from "react-redux";
-import App from "./components/App"
+import App from "./components/App";
+import thunk from "redux-thunk";
+// import {database} from "./database/config"
 
-const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(rootReducer,
+        
+    compose(
+        applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    )
+);
 
 
 
@@ -67,3 +78,21 @@ ReactDom.render(<Provider store={store}><BrowserRouter><App/></BrowserRouter></P
      //initialize the state of the component.
      //make the array a state of the component instance
      //every time you update the state(array), react will rerender the page, updating the ui. 
+
+
+
+//      const id = this.props.match.params.id;
+//      const post = this.props.posts.find((post)=>{
+//          return post.id == id;
+//      })
+//      console.log(post)
+
+//      let commentArr = [];
+
+//    if(this.props.comments){
+//        this.props.comments.forEach(comment=>{
+//            if(comment.id == id){
+//                commentArr.push(comment);
+//            }
+//        })
+//    }

@@ -12,6 +12,10 @@ export default class Main extends Component{
   //  constructor(){
   //    super();
   //  }
+
+  componentDidMount(){
+    this.props.startLoadingPosts();
+  }
     render(){
       //this.props.dispatch(removePost)
       return <div>
@@ -30,6 +34,7 @@ export default class Main extends Component{
                   )}/>
 
                   <Route path="/single/:id" render ={(routeArg)=>(
+                    
                     <Single routeArg={routeArg} {...this.props}/>
                   )}/>
              </div>

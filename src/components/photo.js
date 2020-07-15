@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 // export default function Photo(props){
 // // const post = props.post;
@@ -30,43 +31,83 @@ import {Link} from "react-router-dom";
 // }
 
 
-export default class Photo extends Component{
-    render(){
-      const post = this.props.post;
-      const id = post.id;
-      let commentArr = [];
+class Photo extends Component{
 
-    if(this.props.comments){
-        this.props.comments.forEach(comment=>{
-            if(comment.id == id){
-                commentArr.push(comment);
-            }
-        })
+
+    componentDidMount(){
+        this.props.startLoadingPosts();
     }
-    // console.log(this.props.comments)
+    render(){
+        // console.log(this.props.posts)
+        let post, id;
+        if(this.props.location.pathname === "/"){
+            post = this.props.post;
+            id = post.id;
+        }else{
+            id = this.props.match.params.id;
+            post = this.props.posts.find((post)=>{
+                   return post.id == id;
+             })
+        }
 
+      let commentArr = [];
+      console.log(post,id)
 
+        if(this.props.comments){
+            this.props.comments.forEach(comment=>{
+                if(comment.id == id){
+                    commentArr.push(comment);
+                }
+            })
+        }
 
-
-        return <figure className="figure"> 
-        <Link to={`/single/${post.id}`}><img className="photo" src={this.props.post.imageLink} alt={this.props.post.description} /></Link>
-             <figcaption> <p>{this.props.post.description}</p></figcaption>
-             <div className="button-container">
-                <button className="remove-button" onClick= {()=>{
-                    this.props.removePost(this.props.index)
-                }}>Remove</button>
-                <Link className="button" to={`/single/${post.id}`}>
-                    <div className="comment-count">
-                        <div className="speech-bubble"></div>
-                       {commentArr.length}
+        if(this.props.location.pathname === "/"){
+            return <figure className="figure"> 
+            <Link to={`/single/${post.id}`}><img className="photo" src={this.props.post.imageLink} alt={this.props.post.description} /></Link>
+                 <figcaption> <p>{this.props.post.description}</p></figcaption>
+                 <div className="button-container">
+                    <button className="remove-button" onClick= {()=>{
+                        this.props.startRemovePost(this.props.index,id)
+                        console.log(this.props.index)
+                    }}>Remove</button>
+                    <Link className="button" to={`/single/${post.id}`}>
+                        <div className="comment-count">
+                            <div className="speech-bubble"></div>
+                           {commentArr.length}
+                        </div>
+                    </Link>
+                </div>
+       </figure>
+        }else if(this.props.location.pathname !== "/"){
+            if(this.props.posts.length !== 0){
+                return <figure className="figure"> 
+                <Link to={`/single/${post.id}`}><img className="photo" src={this.props.post.imageLink} alt={this.props.post.description} /></Link>
+                     <figcaption> <p>{this.props.post.description}</p></figcaption>
+                     <div className="button-container">
+                        <button className="remove-button" onClick= {()=>{
+                            this.props.startRemovePost(this.props.index,id)
+                            console.log(this.props.index)
+                        }}>Remove</button>
+                        <Link className="button" to={`/single/${post.id}`}>
+                            <div className="comment-count">
+                                <div className="speech-bubble"></div>
+                               {commentArr.length}
+                            </div>
+                        </Link>
                     </div>
-                </Link>
-            </div>
-   </figure>
+           </figure>
+            }else if(this.props.posts.length === 0){
+                return null;
+            }
+
+        }
+
 
     }
 }
 
+
+export default withRouter(Photo);
 
 
 
