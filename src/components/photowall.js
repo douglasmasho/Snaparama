@@ -5,8 +5,9 @@ import {Link} from "react-router-dom";
 //anchor tag, href attribute
 
 export default function PhotoWall(props){
+
     return   <div>
-                    <Link className="addIcon" to="/AddPhoto">&nbsp;</Link>
+                  <Link className="addIcon" to="/AddPhoto">&nbsp;</Link>
                 <div className="photoGrid">
                   {props.posts.sort((a,b)=>{
                     return  b.id - a.id;

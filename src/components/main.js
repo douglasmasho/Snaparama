@@ -1,9 +1,7 @@
 import React, {Component} from "react"
-import Title from "./title";
 import PhotoWall from "./photowall";
 import AddPhoto from "./addPhoto";
 import {Route} from "react-router-dom";
-import {removePost} from "../redux/actions";
 import {Link} from "react-router-dom";
 import Single from "./single";
 

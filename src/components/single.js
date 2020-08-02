@@ -4,15 +4,11 @@ import Comments from "./comments"
 
 export default class Single extends Component{
 
-    componentDidMount(){
-        this.props.startLoadingComments();
-    }
-   
     render(){
-        
         const {routeArg, posts} = this.props;
         const id = routeArg.match.params.id;
         const comments = this.props.comments;
+        // eslint-disable-next-line eqeqeq
         let post = posts.find((post)=> post.id == id);
         return (
             <div className="single-photo">

@@ -1,7 +1,7 @@
 import {database} from "../database/config"
 
 export function startAddingPost(post){
-    return (dispatch)=>{           /////updating the posts node with an post id(key) with a value of the post
+    return (dispatch)=>{/////updating the posts node with an post id(key) with a value of the post
         return database.ref("posts").update({[post.id]: post}).then(()=>{ //after updating the db, we then dipatch the action that updates the store.
            dispatch(addPost(post))
         })
@@ -25,6 +25,7 @@ export function startLoadingPosts(){
                 posts.push(childSnapShot.val());///we are pushing each of the childsnapshot values into the array, so that we end up with the same array as before
             })
             dispatch(loadPosts(posts))
+            return console.log("seems like return runs a funtion")
         })
     }
 }
@@ -75,14 +76,14 @@ export function addComment(commentObj){
 }
 
 export function loadPosts(posts){
-    return{
+    return {
         type: "LOAD_POSTS",
         posts
     }
 } 
 
 export function loadComments(commentObj){
-    return{
+    return {
         type: "LOAD_COMMENTS",
         commentObj
     }

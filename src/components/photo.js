@@ -35,8 +35,11 @@ class Photo extends Component{
 
 
     componentDidMount(){
+        console.log("mounted")
         this.props.startLoadingPosts();
+        this.props.startLoadingComments();
     }
+    
     render(){
         // console.log(this.props.posts)
         let post, id;
@@ -46,15 +49,16 @@ class Photo extends Component{
         }else{
             id = this.props.match.params.id;
             post = this.props.posts.find((post)=>{
+                   // eslint-disable-next-line eqeqeq
                    return post.id == id;
              })
         }
 
       let commentArr = [];
-      console.log(post,id)
 
         if(this.props.comments){
             this.props.comments.forEach(comment=>{
+                // eslint-disable-next-line eqeqeq
                 if(comment.id == id){
                     commentArr.push(comment);
                 }
