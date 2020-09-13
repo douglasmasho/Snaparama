@@ -4,10 +4,17 @@
 ## Description
 An app on which you can upload pictures, and comment on them.
 
+## IMportant
+The deployed app only works on firefox.
+
 ## Technologies used
 React, Redux, Firebase.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## [Live Demo](https://snaparama.netlify.app/)
+
+## --------------------------------------------------------------------------------------------------------------
 
 ## Available Scripts
 
