@@ -1,13 +1,18 @@
 import React from "react";
 import Photo from "./photo";
 import {Link} from "react-router-dom";
+import Plus from "../plus.svg"
 // import PropTypes from "prop-types"
 //anchor tag, href attribute
 
 export default function PhotoWall(props){
 
     return   <div>
-                  <Link className="addIcon" to="/AddPhoto">&nbsp;</Link>
+                  <Link  to="/AddPhoto">
+                      <div className="addBtn">
+                        <img src={Plus} alt=""/>
+                      </div>
+                  </Link>
                 <div className="photoGrid">
                   {props.posts.sort((a,b)=>{
                     return  b.id - a.id;
