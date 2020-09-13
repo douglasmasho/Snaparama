@@ -4,6 +4,7 @@ import AddPhoto from "./addPhoto";
 import {Route} from "react-router-dom";
 import {Link} from "react-router-dom";
 import Single from "./single";
+import Logo from "../logo.svg"
 
 
 export default class Main extends Component{
@@ -17,9 +18,9 @@ export default class Main extends Component{
     render(){
       //this.props.dispatch(removePost)
       return <div>
-                <h1>
-                  <Link to="/">Photowall</Link>
-                </h1>
+                  <div style={{textAlign: "center", padding: "1rem"}}>
+                     <Link to="/"><img src={Logo} alt="" className="logo"/></Link>
+                  </div>
                <Route exact path="/" render={()=>(
                     <div>
                         <PhotoWall posts={this.props.posts} {...this.props}/>
