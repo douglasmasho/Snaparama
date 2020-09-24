@@ -4,7 +4,7 @@ import ReactDom from "react-dom";
 import "./styles/main.scss";
 import {BrowserRouter} from "react-router-dom";
 //create and init the redux store
-import {createStore, applyMiddleware, compose} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import rootReducer from "./redux/reducer";
 import {Provider} from "react-redux";
 import App from "./components/App";
