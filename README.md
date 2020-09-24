@@ -4,9 +4,6 @@
 ## Description
 An app on which you can upload pictures, and comment on them.
 
-## Important
-The deployed app only works on firefox.
-
 ## Technologies used
 React, Redux, Firebase.
 
